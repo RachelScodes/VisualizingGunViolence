@@ -1,0 +1,14 @@
+<div class="shootings">
+   <% @data.each do |stat| %>
+      <div class="statistics">
+         <h1><%= "#{stat.case},#{stat.location}" %></h1>
+         <p>A <%= "#{stat.race} #{stat.gender}" %> perpetrated a <%= stat.shooting_type %> shooting.</p>
+         <p><%= "#{stat.fatalities} Fatalities. #{stat.injured} Injured. #{stat.total_victims} Total Victims." %></p>
+         <p><%= "#{stat.summary}"%></p>
+         <p>Did the shooter show signs of mental illness? <%= "#{stat.warning_signs}: #{stat.mental_health}" %></p>
+         <p>Did the shooter get their weapons legally? <%= "#{stat.weapons_obtained_legally}: #{stat.where_obtained}"%></p>
+         <p>What kind of weapon left <%= "#{stat.total_victims} Dead or Injured?: #{stat.weapon_details}"%></p>
+         <p>Happened <%= "on #{stat.date}, #{stat.year}" %></p>
+      </div>
+   <% end %>
+</div>
