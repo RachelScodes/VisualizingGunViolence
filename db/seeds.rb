@@ -89,6 +89,5 @@ headers = Statistic.column_names
 headers.shift
 
 CSV.foreach(filename, col_sep: ",") do |row|
-   binding.pry
    Statistic.create(Hash[headers.zip row])
 end
