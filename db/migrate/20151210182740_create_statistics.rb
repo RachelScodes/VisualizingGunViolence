@@ -3,7 +3,7 @@ class CreateStatistics < ActiveRecord::Migration
     create_table :statistics do |t|
       t.string :case
       t.string :location
-      t.date :date
+      t.date :date #convert data in here
       t.integer :year
       t.string :summary
       t.integer :fatalities
