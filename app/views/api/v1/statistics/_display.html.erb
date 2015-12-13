@@ -1,5 +1,5 @@
 <div class="shootings">
-   <% @data.each do |stat| %>
+   <% @response.each do |stat| %>
       <div class="statistics">
          <h1><%= "#{stat.case},#{stat.location}" %></h1>
          <p>A <%= "#{stat.race} #{stat.gender}" %> perpetrated a <%= stat.shooting_type %> shooting.</p>
