@@ -3,8 +3,11 @@ Rails.application.routes.draw do
    scope module: "api", defaults: {format: :json} do
       scope "api" do
          namespace :v1 do
-            # post '/stats/all' => 'statistics#index', as: :all
-            resources :statistics, only: [:index, :show, :search]
+            # get '/stats/all' => 'statistics#index'
+            get '/stats/mental' => 'statistics#search_mental'
+            get '/stats/legal' => 'statistics#search_legal'
+            get '/stats/both' => 'statistics#search_both'
+            resources :statistics, only: [:index, :show]
          end
       end
    end

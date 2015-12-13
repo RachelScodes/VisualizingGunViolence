@@ -16,11 +16,33 @@ module Api::V1
          render json: @statistic.as_json
       end
 
-      def search
+      def search_mental
          # pg search gem
-         @results = Statistic.search_by(params[:search_term]);
+         @results = []
+         Statistic.where(warning_signs: 'Yes').find_each do |statistic|
+            @results.push(statistic)
+         end
          render json: @results.as_json()
       end
+
+      def search_legal
+         # pg search gem
+         @results = []
+         Statistic.where(weapons_obtained_legally: 'Yes').find_each do |statistic|
+            @results.push(statistic)
+         end
+         render json: @results.as_json()
+      end
+
+      def search_both
+         # pg search gem
+         @results = []
+         Statistic.where(warning_signs: 'Yes', weapons_obtained_legally: 'Yes').find_each do |statistic|
+            @results.push(statistic)
+         end
+         render json: @results.as_json()
+      end
+
 
    end
 end
