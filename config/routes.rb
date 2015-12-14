@@ -1,6 +1,25 @@
 Rails.application.routes.draw do
-   root 'welcome#index'
 
+   scope module: "api", defaults: {format: :json} do
+      scope "api" do
+         namespace :v1 do
+            # get '/stats/all' => 'statistics#index'
+            get '/stats/mental' => 'statistics#search_mental'
+            get '/stats/legal' => 'statistics#search_legal'
+            get '/stats/both' => 'statistics#search_both'
+            resources :statistics, only: [:index, :show]
+         end
+      end
+   end
+
+   # namespace :api, defaults: {format: :json} do
+   #    namespace :v1 do
+   #       # post '/stats/all' => 'statistics#index', as: :all
+   #       resources :statistics, only: [:index]
+   #    end
+   # end
+
+   root 'welcome#index'
    get 'graph/index'
    get 'graph/data', :defaults => { :format => 'json' }
 

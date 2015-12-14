@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151211002522) do
+ActiveRecord::Schema.define(version: 20151213172732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,22 @@ ActiveRecord::Schema.define(version: 20151211002522) do
     t.string   "shooting_type"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "victims", force: :cascade do |t|
+    t.integer  "victim_id"
+    t.date     "date"
+    t.string   "name"
+    t.string   "gender"
+    t.integer  "age"
+    t.integer  "age_group"
+    t.string   "city"
+    t.string   "state"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.string   "sources"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
