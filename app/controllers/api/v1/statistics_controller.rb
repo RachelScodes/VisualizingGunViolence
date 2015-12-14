@@ -17,7 +17,6 @@ module Api::V1
       end
 
       def search_mental
-         # pg search gem
          @results = []
          Statistic.where(warning_signs: 'Yes').find_each do |statistic|
             @results.push(statistic)
@@ -26,7 +25,6 @@ module Api::V1
       end
 
       def search_legal
-         # pg search gem
          @results = []
          Statistic.where(weapons_obtained_legally: 'Yes').find_each do |statistic|
             @results.push(statistic)
@@ -35,7 +33,6 @@ module Api::V1
       end
 
       def search_both
-         # pg search gem
          @results = []
          Statistic.where(warning_signs: 'Yes', weapons_obtained_legally: 'Yes').find_each do |statistic|
             @results.push(statistic)
@@ -43,6 +40,10 @@ module Api::V1
          render json: @results.as_json()
       end
 
+      def search_deaths
+         @results = Death.all
+         render json: @results.as_json()
+      end
 
    end
 end
